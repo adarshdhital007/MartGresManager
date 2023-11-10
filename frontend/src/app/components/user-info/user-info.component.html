@@ -1,0 +1,66 @@
+<div *ngIf="loggedInUser" class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="text-center user-welcome">
+        <h2 class="mb-4">
+          Hello, <span class="username">{{ loggedInUser.username }}</span
+          >!
+        </h2>
+        <p class="user-description">
+          We're thrilled to have you here. Explore, engage, and make the most of
+          your experience.
+        </p>
+
+        <button (click)="logOut()" class="btn btn-danger btn-lg">
+          Log Out
+        </button>
+
+        <div *ngIf="orderHistory.length > 0" class="order-history mt-5">
+          <h3>Order History</h3>
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <!-- Table Header -->
+              <thead>
+                <tr>
+                  <th scope="col">Order ID</th>
+                  <th scope="col">Total Cost</th>
+                  <th scope="col">Shipping Address</th>
+                  <th scope="col">Item Names</th>
+                </tr>
+              </thead>
+              <!-- Table Body -->
+              <tbody>
+                <tr *ngFor="let order of orderHistory">
+                  <td>{{ order.id }}</td>
+                  <td>${{ order.total_cost }}</td>
+                  <td>
+                    {{ order.shipping_address }}, {{ order.shipping_city }},
+                    {{ order.shipping_state }}, {{ order.shipping_zip }}
+                  </td>
+                  <td>
+                    <ul>
+                      <li *ngFor="let item of order.item_names">
+                        {{ item.name }} (Quantity: {{ item.quantity }})(Price: ${{ item.price * item.quantity }})
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+
+              <!-- Table Footer -->
+              <tfoot>
+                <tr>
+                  <td colspan="2"></td>
+                  <td scope="col">Overall Total Cost:</td>
+                  <td  scope="col">
+                    ${{ calculateOverallTotalCost() }}
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

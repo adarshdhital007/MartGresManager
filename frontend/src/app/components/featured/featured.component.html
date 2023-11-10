@@ -1,0 +1,50 @@
+<div class="container">
+  <h2 class="mt-1 text-center">Featured Products</h2>
+  <div class="row mt-2">
+    <div class="col-md-10 col-lg-6 mx-auto">
+      <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1500">
+        <div class="carousel-inner">
+          <div
+            class="carousel-item"
+            *ngFor="let product of featuredProducts; let i = index"
+            [ngClass]="{ active: i === 2 }"
+          >
+            <div class="card">
+              <img
+                [src]="product.url"
+                class="card-img-top"
+                alt="{{ product.name }}"
+              />
+              <div class="card-body">
+                <h3 class="card-title text-center">{{ product.name }}</h3>
+                <p class="card-text text-center">
+                  <a
+                    routerLink="/product/details/{{ product.id }}"
+                    class="btn btn-primary"
+                    >View Details</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a
+          class="carousel-control-prev"
+          href="#featuredCarousel"
+          role="button"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#featuredCarousel"
+          role="button"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

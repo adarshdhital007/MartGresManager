@@ -1,0 +1,103 @@
+MartManager with PostGres and Angular (Backend + Frontend(Angular 17))
+
+📦backend
+ ┣ 📂config
+ ┃ ┗ 📜db.config.js
+ ┣ 📂controllers
+ ┃ ┗ 📜inventory.controller.js
+ ┣ 📂models
+ ┃ ┣ 📜index.js
+ ┃ ┗ 📜product.model.js
+ ┣ 📂routes
+ ┃ ┗ 📜product.routes.js
+ ┣ 📜.DS_Store
+ ┣ 📜.env
+ ┣ 📜.gitignore
+ ┣ 📜package-lock.json
+ ┣ 📜package.json
+ ┗ 📜server.js
+
+
+ 📦frontend
+ ┣ 📂src
+ ┃ ┣ 📂app
+ ┃ ┃ ┣ 📂components
+ ┃ ┃ ┃ ┣ 📂cart
+ ┃ ┃ ┃ ┃ ┣ 📜cart.component.css
+ ┃ ┃ ┃ ┃ ┣ 📜cart.component.html
+ ┃ ┃ ┃ ┃ ┣ 📜cart.component.spec.ts
+ ┃ ┃ ┃ ┃ ┗ 📜cart.component.ts
+ ┃ ┃ ┃ ┣ 📂checkout
+ ┃ ┃ ┃ ┃ ┣ 📜checkout.component.css
+ ┃ ┃ ┃ ┃ ┣ 📜checkout.component.html
+ ┃ ┃ ┃ ┃ ┣ 📜checkout.component.spec.ts
+ ┃ ┃ ┃ ┃ ┗ 📜checkout.component.ts
+ ┃ ┃ ┃ ┣ 📂featured
+ ┃ ┃ ┃ ┃ ┣ 📜featured.component.css
+ ┃ ┃ ┃ ┃ ┣ 📜featured.component.html
+ ┃ ┃ ┃ ┃ ┣ 📜featured.component.spec.ts
+ ┃ ┃ ┃ ┃ ┗ 📜featured.component.ts
+ ┃ ┃ ┃ ┣ 📂login
+ ┃ ┃ ┃ ┃ ┣ 📜login.component.css
+ ┃ ┃ ┃ ┃ ┣ 📜login.component.html
+ ┃ ┃ ┃ ┃ ┣ 📜login.component.spec.ts
+ ┃ ┃ ┃ ┃ ┗ 📜login.component.ts
+ ┃ ┃ ┃ ┣ 📂order-success-modal
+ ┃ ┃ ┃ ┃ ┣ 📜order-success-modal.component.css
+ ┃ ┃ ┃ ┃ ┣ 📜order-success-modal.component.html
+ ┃ ┃ ┃ ┃ ┣ 📜order-success-modal.component.spec.ts
+ ┃ ┃ ┃ ┃ ┗ 📜order-success-modal.component.ts
+ ┃ ┃ ┃ ┣ 📂productdetails
+ ┃ ┃ ┃ ┃ ┣ 📜productdetails.component.css
+ ┃ ┃ ┃ ┃ ┣ 📜productdetails.component.html
+ ┃ ┃ ┃ ┃ ┣ 📜productdetails.component.spec.ts
+ ┃ ┃ ┃ ┃ ┗ 📜productdetails.component.ts
+ ┃ ┃ ┃ ┣ 📂products
+ ┃ ┃ ┃ ┃ ┣ 📜products.component.css
+ ┃ ┃ ┃ ┃ ┣ 📜products.component.html
+ ┃ ┃ ┃ ┃ ┣ 📜products.component.spec.ts
+ ┃ ┃ ┃ ┃ ┗ 📜products.component.ts
+ ┃ ┃ ┃ ┣ 📂register
+ ┃ ┃ ┃ ┃ ┣ 📜register.component.css
+ ┃ ┃ ┃ ┃ ┣ 📜register.component.html
+ ┃ ┃ ┃ ┃ ┣ 📜register.component.spec.ts
+ ┃ ┃ ┃ ┃ ┗ 📜register.component.ts
+ ┃ ┃ ┃ ┗ 📂user-info
+ ┃ ┃ ┃ ┃ ┣ 📜user-info.component.css
+ ┃ ┃ ┃ ┃ ┣ 📜user-info.component.html
+ ┃ ┃ ┃ ┃ ┣ 📜user-info.component.spec.ts
+ ┃ ┃ ┃ ┃ ┗ 📜user-info.component.ts
+ ┃ ┃ ┣ 📂guards
+ ┃ ┃ ┃ ┗ 📜auth.guard.ts
+ ┃ ┃ ┣ 📂models
+ ┃ ┃ ┃ ┗ 📜Product.model.ts
+ ┃ ┃ ┣ 📂services
+ ┃ ┃ ┃ ┣ 📜app.js
+ ┃ ┃ ┃ ┣ 📜order-history.service.ts
+ ┃ ┃ ┃ ┣ 📜product.service.ts
+ ┃ ┃ ┃ ┣ 📜productdb.service.ts
+ ┃ ┃ ┃ ┣ 📜user.service.ts
+ ┃ ┃ ┃ ┗ 📜userinfo.service.ts
+ ┃ ┃ ┣ 📜app-routing.module.ts
+ ┃ ┃ ┣ 📜app.component.css
+ ┃ ┃ ┣ 📜app.component.html
+ ┃ ┃ ┣ 📜app.component.spec.ts
+ ┃ ┃ ┣ 📜app.component.ts
+ ┃ ┃ ┣ 📜app.module.server.ts
+ ┃ ┃ ┗ 📜app.module.ts
+ ┃ ┣ 📂assets
+ ┃ ┃ ┗ 📜loading.gif
+ ┃ ┣ 📜favicon.ico
+ ┃ ┣ 📜index.html
+ ┃ ┣ 📜main.server.ts
+ ┃ ┣ 📜main.ts
+ ┃ ┗ 📜styles.css
+ ┣ 📜.gitignore
+ ┣ 📜README.md
+ ┣ 📜angular.json
+ ┣ 📜package-lock.json
+ ┣ 📜package.json
+ ┣ 📜server.ts
+ ┣ 📜tsconfig.app.json
+ ┣ 📜tsconfig.json
+ ┗ 📜tsconfig.spec.json

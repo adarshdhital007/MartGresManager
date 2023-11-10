@@ -1,0 +1,63 @@
+<div class="container mt-4">
+    <div *ngIf="product">
+      <div class="row">
+        <div class="col-lg-6">
+          <div *ngIf="product.loading">
+            <!-- Display the loading icon while the image is loading -->
+            <img
+              src="assets/loading.gif"
+              class="img-fluid rounded mb-3"
+              alt="Loading"
+            />
+          </div>
+          <img
+            [src]="product.url"
+            alt="{{ product.name }}"
+            class="img-fluid rounded mb-3"
+            (load)="product.loading = false"
+            (error)="product.loading = false"
+            [hidden]="product.loading"
+          />
+        </div>
+        <div class="col-lg-6">
+          <h1>{{ product.name }}</h1>
+          <h5><strong>Price:</strong> {{ product.cost | currency }}</h5>
+          <!-- Quantity display -->
+          <p><strong>Quantity:</strong> {{ product.quantity }}</p>
+          <hr />
+          <h3>Description:</h3>
+          <p>{{ product.description }}</p>
+          <hr />
+          <h3>Features:</h3>
+          <ul>
+            <li *ngFor="let feature of product.features">{{ feature }}</li>
+          </ul>
+  
+          <!-- Add to Cart and Buy Now buttons -->
+          <div class="mt-4">
+            <div class="mt-4">
+              <button
+                (click)="addToCart(product)"
+                class="btn btn-primary m-1 p-2"
+                [disabled]="product.quantity === 0"
+              >
+                Add to Cart
+              </button>
+              <button
+                (click)="buyNow(product)"
+                class="btn btn-success m-1 p-2"
+                [disabled]="isCartEmpty"
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="showNotFoundMessage" class="mt-4 text-center">
+    <h1 class="text-danger">Product not found.</h1>
+  </div>
+  

@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row mt-4">
+    @for (product of filteredProducts;track product) {
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card mb-3">
+        @if (product.loading) {
+        <img src="assets/loading.gif" class="card-img-top" alt="Loading" />
+        } @else if(!product.loading) {
+        <img
+          [src]="product.url"
+          class="card-img-top"
+          alt="{{ product.name }}"
+          (load)="product.loading = false"
+          (error)="product.loading = false"
+        />
+        }
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">
+            <strong>Price:</strong> {{ product.cost | currency }}
+          </p>
+          <button
+            routerLink="/product/details/{{ product.id }}"
+            class="btn btn-primary"
+          >
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

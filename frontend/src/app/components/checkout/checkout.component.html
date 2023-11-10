@@ -1,0 +1,158 @@
+<div class="container mt-4">
+  <h2>Checkout</h2>
+
+  <div *ngIf="isCartEmpty">
+    <p>Your cart is empty.</p>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table" *ngIf="cartItems.length > 0">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>
+            <div class="media">
+              <img
+                [src]="item.url"
+                alt="{{ item.name }}"
+                class="img-thumbnail"
+                width="100"
+              />
+            </div>
+          </td>
+          <td>
+            <h6 class="mt-0">{{ item.name }}</h6>
+          </td>
+          <td>{{ item.cost | currency }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.cost * item.quantity | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="cartItems.length > 0">
+    <p class="text-right">
+      <strong>Total Cost: {{ totalCost | currency }}</strong>
+    </p>
+  </div>
+
+  <!-- Shipping information form -->
+  <form (ngSubmit)="onSubmit()">
+    <h3>Shipping Information</h3>
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        [(ngModel)]="shippingInfo.name"
+        name="name"
+        required
+      />
+      <div
+        class="text-danger"
+        *ngIf="!isFormValid && shippingInfo.name.trim() === ''"
+      >
+        Name is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        [(ngModel)]="shippingInfo.email"
+        name="email"
+        required
+      />
+      <div
+        class="text-danger"
+        *ngIf="!isFormValid && shippingInfo.email.trim() === ''"
+      >
+        Email is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <input
+        type="text"
+        class="form-control"
+        id="address"
+        [(ngModel)]="shippingInfo.address"
+        name="address"
+        required
+      />
+      <div
+        class="text-danger"
+        *ngIf="!isFormValid && shippingInfo.address.trim() === ''"
+      >
+        Address is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="city" class="form-label">City</label>
+      <input
+        type="text"
+        class="form-control"
+        id="city"
+        [(ngModel)]="shippingInfo.city"
+        name="city"
+        required
+      />
+      <div
+        class="text-danger"
+        *ngIf="!isFormValid && shippingInfo.city.trim() === ''"
+      >
+        City is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="state" class="form-label">State</label>
+      <input
+        type="text"
+        class="form-control"
+        id="state"
+        [(ngModel)]="shippingInfo.state"
+        name="state"
+        required
+      />
+      <div
+        class="text-danger"
+        *ngIf="!isFormValid && shippingInfo.state.trim() === ''"
+      >
+        State is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="zip" class="form-label">ZIP Code</label>
+      <input
+        type="text"
+        class="form-control"
+        id="zip"
+        [(ngModel)]="shippingInfo.zip"
+        name="zip"
+        required
+      />
+      <div
+        class="text-danger"
+        *ngIf="!isFormValid && shippingInfo.zip.trim() === ''"
+      >
+        ZIP Code is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-3" [disabled]="isCartEmpty">
+      Place Order
+    </button>
+  </form>
+</div>

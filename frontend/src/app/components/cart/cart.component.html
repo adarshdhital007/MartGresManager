@@ -1,0 +1,63 @@
+<div class="container mt-4">
+    <h2>Your Shopping Cart</h2>
+  
+    <div *ngIf="cartItems.length === 0">
+      <p>Your cart is empty.</p>
+    </div>
+    <div class="spacer"></div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cartItems">
+            <td>
+              <div class="media">
+                <img
+                  [src]="item.url"
+                  alt="{{ item.name }}"
+                  class="img-thumbnail"
+                  width="100"
+                />
+              </div>
+            </td>
+            <td>
+                <div class="input-group">
+                  <button
+                    class="btn btn-sm btn-secondary"
+                    (click)="decrementQuantity(item)"
+                  >
+                    -
+                  </button>
+                  <span class="input-group-text">{{ item.quantity }}</span>
+                  <button
+                    class="btn btn-sm btn-secondary"
+                    (click)="incrementQuantity(item)"
+                  >
+                    +
+                  </button>
+                </div>
+              </td>
+              <td>
+                <button
+                  class="btn btn-danger btn-sm"
+                  (click)="removeFromCart(item)"
+                >
+                  Remove
+                </button>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div *ngIf="cartItems.length > 0" class="mt-4">
+      <p>Total Cost: {{ totalCost | currency }}</p>
+      <button class="btn btn-success" (click)="goToCheckout()">Checkout</button>
+    </div>
+</div>
